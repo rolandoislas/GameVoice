@@ -7,7 +7,7 @@ GameVoice provides customizable voice activated macros.
 
 ### Default Commands
 
-GameVoice come with commands used to activate the Smite Voice Guided System (VGS).
+GameVoice comes with commands used to activate the Smite Voice Guided System (VGS).
 
 Examples:
 
@@ -17,7 +17,7 @@ Examples:
 
 ### Settings
 
-Application settings can be modfied by editing `settings.json`. This can be found in the roaming application data `GameVoice` folder, or by navigating to the `Edit Configuration` menu item.
+Application settings can be modified by editing `settings.json`. This can be found in the roaming application data `GameVoice` folder, or by navigating to the `Edit Configuration` menu item.
 
 A restart of the application is required to load the new settings.
 
@@ -37,7 +37,7 @@ If this value is set to `true`, the message will not be displayed.
 
 ### Editing Commands
 
-Vocal commands can be modfied by editing `commands.json`. This can be found in the roaming application data `GameVoice` folder, or by navigating to the `Edit Commands` menu item.
+Vocal commands can be modified by editing `commands.json`. This can be found in the roaming application data `GameVoice` folder, or by navigating to the `Edit Commands` menu item.
 
 A restart of the application is required to load the new commands.
 
@@ -49,7 +49,7 @@ This defines what phrase will prefix all of the commands. This can be left blank
 
 #### Example Command
 
-The following example will create a command that outputs `vaa` when `*mainCommand* attack` is recongnized.
+The following example will create a command that outputs `vaa` when `*mainCommand* attack` is recognized.
 
 ```
 ...
