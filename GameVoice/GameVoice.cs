@@ -25,22 +25,18 @@ namespace GameVoice {
         }
 
         private static void createConfigs() {
-            string commandFilePath = Path.Combine(Config.configPath, "commands.json");
-            string settingsFilePath = Path.Combine(Config.configPath, "settings.json");
-
             try {
                 Directory.CreateDirectory(Config.configPath);
-                if(!File.Exists(commandFilePath)) {
-                    Stream commandInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config.commands.json");
-                    FileStream commandOutput = new FileStream(commandFilePath, FileMode.Create);
-                    commandInput.CopyTo(commandOutput);
-                    commandOutput.Close();
-                }
-                if(!File.Exists(settingsFilePath)) {
-                    Stream settingsInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config.settings.json");
-                    FileStream settingsOutput = new FileStream(settingsFilePath, FileMode.Create);
-                    settingsInput.CopyTo(settingsOutput);
-                    settingsOutput.Close();
+
+                foreach(string fileName in Config.configFileNames) {
+                    string filePath = Path.Combine(Config.configPath, fileName);
+                    if (!File.Exists(filePath)) {
+                        Stream fileInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config." + fileName);
+                        FileStream fileOutput = new FileStream(filePath, FileMode.Create);
+                        fileInput.CopyTo(fileOutput);
+                        fileOutput.Close();
+                        fileInput.Close();
+                    }
                 }
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Error Creating Configuration");

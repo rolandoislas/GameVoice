@@ -6,6 +6,10 @@ namespace GameVoice {
 
         // Configuration Files
         public static readonly string configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "GameVoice");
+        public static readonly string[] configFileNames = {
+                                                              "settings.json",
+                                                              "commands.json"
+                                                          };
 
         // User settings
         public float confidenceThreshold { get; set; }
