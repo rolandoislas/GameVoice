@@ -116,8 +116,10 @@
             this.Controls.Add(this.micLevelLabel);
             this.Controls.Add(this.micLevelBar);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
+            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "GameVoice";
             this.menuStrip.ResumeLayout(false);
