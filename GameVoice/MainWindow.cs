@@ -66,17 +66,17 @@ namespace GameVoice {
         private void engine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e) {
             outputResult(e.Result);
             if(aboveConfidenceThreshold(e.Result.Confidence)) {
-                string vgs = getVgsFromCommand(e.Result.Text);
-                if (vgs != null) {
-                    SendKeys.Send(vgs);
+                string command = getCommandFromVoiceResult(e.Result.Text);
+                if (command != null) {
+                    SendKeys.Send(command);
                 }
             }
         }
 
-        private string getVgsFromCommand(string command) {
+        private string getCommandFromVoiceResult(string voiceResult) {
             try {
-                var vgs = commands.Where(c => (getMainCommand() + c.text).Equals(command)).First();
-                return vgs.vgs;
+                var command = commands.Where(c => (getMainCommand() + c.text).Equals(voiceResult)).First();
+                return command.command;
             } catch (Exception) {
                 return null;
             }

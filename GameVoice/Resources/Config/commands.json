@@ -3,619 +3,619 @@
   "commands": [
     {
       "text": "attack left lane",
-      "vgs": "va1"
+      "command": "va1"
     },
     {
       "text": "attack middle lane",
-      "vgs": "va2"
+      "command": "va2"
     },
     {
       "text": "attack right lane",
-      "vgs": "va3"
+      "command": "va3"
     },
     {
       "text": "attack",
-      "vgs": "vaa"
+      "command": "vaa"
     },
     {
       "text": "attack the fire giant",
-      "vgs": "vaf"
+      "command": "vaf"
     },
     {
       "text": "attack the gold fury",
-      "vgs": "vag"
+      "command": "vag"
     },
     {
       "text": "attack the titan",
-      "vgs": "vam"
+      "command": "vam"
     },
     {
       "text": "attack the minions",
-      "vgs": "vam"
+      "command": "vam"
     },
     {
       "text": "attack left towner",
-      "vgs": "vat1"
+      "command": "vat1"
     },
     {
       "text": "attack the left phoenix",
-      "vgs": "vat1"
+      "command": "vat1"
     },
     {
       "text": "attack middle tower",
-      "vgs": "vat2"
+      "command": "vat2"
     },
     {
       "text": "attack the middle phoenix",
-      "vgs": "vat2"
+      "command": "vat2"
     },
     {
       "text": "attack right tower",
-      "vgs": "vat3"
+      "command": "vat3"
     },
     {
       "text": "attack the right phoenix",
-      "vgs": "vat3"
+      "command": "vat3"
     },
     {
       "text": "enemies in left lane",
-      "vgs": "vb1"
+      "command": "vb1"
     },
     {
       "text": "enemies in middle lane",
-      "vgs": "vb2"
+      "command": "vb2"
     },
     {
       "text": "enemies in right lane",
-      "vgs": "vb3"
+      "command": "vb3"
     },
     {
       "text": "enemy ultimate incoming",
-      "vgs": "vba"
+      "command": "vba"
     },
     {
       "text": "enemies have returned to base",
-      "vgs": "vbb"
+      "command": "vbb"
     },
     {
       "text": "enemy ultimate down",
-      "vgs": "vbd"
+      "command": "vbd"
     },
     {
       "text": "enemies behind us",
-      "vgs": "vbe"
+      "command": "vbe"
     },
     {
       "text": "enemies at the fire giant",
-      "vgs": "vbf"
+      "command": "vbf"
     },
     {
       "text": "enemies at the gold fury",
-      "vgs": "vbg"
+      "command": "vbg"
     },
     {
       "text": "enemies at our titan",
-      "vgs": "vbm"
+      "command": "vbm"
     },
     {
       "text": "enemy spotted",
-      "vgs": "vbs"
+      "command": "vbs"
     },
     {
       "text": "enemies in the left jungle",
-      "vgs": "vbj1"
+      "command": "vbj1"
     },
     {
       "text": "enemies in the tight jungle",
-      "vgs": "vbj2"
+      "command": "vbj2"
     },
     {
       "text": "enemies in the jungle",
-      "vgs": "vbjj"
+      "command": "vbjj"
     },
     {
       "text": "be careful left",
-      "vgs": "vc1"
+      "command": "vc1"
     },
     {
       "text": "be careful middle",
-      "vgs": "vc2"
+      "command": "vc2"
     },
     {
       "text": "be careful right",
-      "vgs": "vc3"
+      "command": "vc3"
     },
     {
       "text": "return to base",
-      "vgs": "vcb"
+      "command": "vcb"
     },
     {
       "text": "be careful",
-      "vgs": "vcc"
+      "command": "vcc"
     },
     {
       "text": "be careful in the jungle",
-      "vgs": "vcj"
+      "command": "vcj"
     },
     {
       "text": "defend left lane",
-      "vgs": "vd1"
+      "command": "vd1"
     },
     {
       "text": "defend middle lane",
-      "vgs": "vd2"
+      "command": "vd2"
     },
     {
       "text": "defend right lane",
-      "vgs": "vd3"
+      "command": "vd3"
     },
     {
       "text": "defend",
-      "vgs": "vdd"
+      "command": "vdd"
     },
     {
       "text": "defend the fire giant",
-      "vgs": "vdf"
+      "command": "vdf"
     },
     {
       "text": "defend the gold fury",
-      "vgs": "vdg"
+      "command": "vdg"
     },
     {
       "text": "defend the titan",
-      "vgs": "vdm"
+      "command": "vdm"
     },
     {
       "text": "defend the portal",
-      "vgs": "vdm"
+      "command": "vdm"
     },
     {
       "text": "awesome",
-      "vgs": "vea"
+      "command": "vea"
     },
     {
       "text": "I'm the greatest",
-      "vgs": "veg"
+      "command": "veg"
     },
     {
       "text": "joke",
-      "vgs": "vej"
+      "command": "vej"
     },
     {
       "text": "laugh",
-      "vgs": "vel"
+      "command": "vel"
     },
     {
       "text": "you rock",
-      "vgs": "ver"
+      "command": "ver"
     },
     {
       "text": "taunt",
-      "vgs": "vet"
+      "command": "vet"
     },
     {
       "text": "woohoo",
-      "vgs": "vew"
+      "command": "vew"
     },
     {
       "text": "enemy missing left",
-      "vgs": "vf1"
+      "command": "vf1"
     },
     {
       "text": "enemy missing middle",
-      "vgs": "vf2"
+      "command": "vf2"
     },
     {
       "text": "enemy missing right",
-      "vgs": "vf3"
+      "command": "vf3"
     },
     {
       "text": "enemy missing",
-      "vgs": "vff"
+      "command": "vff"
     },
     {
       "text": "gank left lane",
-      "vgs": "vg1"
+      "command": "vg1"
     },
     {
       "text": "gank middle lane",
-      "vgs": "vg2"
+      "command": "vg2"
     },
     {
       "text": "gank right lane",
-      "vgs": "vg3"
+      "command": "vg3"
     },
     {
       "text": "gank",
-      "vgs": "vgg"
+      "command": "vgg"
     },
     {
       "text": "help left lane",
-      "vgs": "vh1"
+      "command": "vh1"
     },
     {
       "text": "help middle lane",
-      "vgs": "vh2"
+      "command": "vh2"
     },
     {
       "text": "help right lane",
-      "vgs": "vh3"
+      "command": "vh3"
     },
     {
       "text": "help",
-      "vgs": "vhh"
+      "command": "vhh"
     },
     {
       "text": "need healing",
-      "vgs": "vhs"
+      "command": "vhs"
     },
     {
       "text": "enemies incoming left",
-      "vgs": "vi1"
+      "command": "vi1"
     },
     {
       "text": "enemies incoming middle",
-      "vgs": "vi2"
+      "command": "vi2"
     },
     {
       "text": "enemies incoming right",
-      "vgs": "vi3"
+      "command": "vi3"
     },
     {
       "text": "enemies incoming",
-      "vgs": "vii"
+      "command": "vii"
     },
     {
       "text": "ward left",
-      "vgs": "vq1"
+      "command": "vq1"
     },
     {
       "text": "ward middle",
-      "vgs": "vq2"
+      "command": "vq2"
     },
     {
       "text": "ward right",
-      "vgs": "vq3"
+      "command": "vq3"
     },
     {
       "text": "ward the fire giant",
-      "vgs": "vqf"
+      "command": "vqf"
     },
     {
       "text": "ward the gold fury",
-      "vgs": "vqg"
+      "command": "vqg"
     },
     {
       "text": "we need wards",
-      "vgs": "vqn"
+      "command": "vqn"
     },
     {
       "text": "ward here",
-      "vgs": "vqq"
+      "command": "vqq"
     },
     {
       "text": "retreat left lane",
-      "vgs": "vr1"
+      "command": "vr1"
     },
     {
       "text": "retreat middle lane",
-      "vgs": "vr2"
+      "command": "vr2"
     },
     {
       "text": "retreat right lane",
-      "vgs": "vr3"
+      "command": "vr3"
     },
     {
       "text": "retreat from the jungle",
-      "vgs": "vrj"
+      "command": "vrj"
     },
     {
       "text": "retreat",
-      "vgs": "vrr"
+      "command": "vrr"
     },
     {
       "text": "save yourself",
-      "vgs": "vrs"
+      "command": "vrs"
     },
     {
       "text": "I'm on it",
-      "vgs": "vso"
+      "command": "vso"
     },
     {
       "text": "falling back",
-      "vgs": "vsr"
+      "command": "vsr"
     },
     {
       "text": "I'm building stacks",
-      "vgs": "vss"
+      "command": "vss"
     },
     {
       "text": "I'll attack left lane",
-      "vgs": "vsa1"
+      "command": "vsa1"
     },
     {
       "text": "I'll attack middle lane",
-      "vgs": "vsa2"
+      "command": "vsa2"
     },
     {
       "text": "I'll attack right lane",
-      "vgs": "vsa3"
+      "command": "vsa3"
     },
     {
       "text": "I'll attack",
-      "vgs": "vsaa"
+      "command": "vsaa"
     },
     {
       "text": "I'll attack fire giant",
-      "vgs": "vsaf"
+      "command": "vsaf"
     },
     {
       "text": "I'll attack the gold fury",
-      "vgs": "vsag"
+      "command": "vsag"
     },
     {
       "text": "I'll attack the titan",
-      "vgs": "vsam"
+      "command": "vsam"
     },
     {
       "text": "I'm going for jungle buff",
-      "vgs": "vsbb"
+      "command": "vsbb"
     },
     {
       "text": "I need the jungle buff",
-      "vgs": "vsbn"
+      "command": "vsbn"
     },
     {
       "text": "take this jungle buff",
-      "vgs": "vsbt"
+      "command": "vsbt"
     },
     {
       "text": "I'll defend left lane",
-      "vgs": "vsd1"
+      "command": "vsd1"
     },
     {
       "text": "I'll defend middle lane",
-      "vgs": "vsd2"
+      "command": "vsd2"
     },
     {
       "text": "I'll defend right lane",
-      "vgs": "vsd3"
+      "command": "vsd3"
     },
     {
       "text": "I'll defend",
-      "vgs": "vsdd"
+      "command": "vsdd"
     },
     {
       "text": "I'll defend the fire giant",
-      "vgs": "vsdf"
+      "command": "vsdf"
     },
     {
       "text": "I'll defend the gold fury",
-      "vgs": "vsdg"
+      "command": "vsdg"
     },
     {
       "text": "I'll defend the titan",
-      "vgs": "vsdm"
+      "command": "vsdm"
     },
     {
       "text": "I'll gank left lane",
-      "vgs": "vsg1"
+      "command": "vsg1"
     },
     {
       "text": "I'll gank middle lane",
-      "vgs": "vsg2"
+      "command": "vsg2"
     },
     {
       "text": "I'll gank right lane",
-      "vgs": "vsg3"
+      "command": "vsg3"
     },
     {
       "text": "I'll gank",
-      "vgs": "vsgg"
+      "command": "vsgg"
     },
     {
       "text": "I will ward left",
-      "vgs": "vsq1"
+      "command": "vsq1"
     },
     {
       "text": "I will ward middle",
-      "vgs": "vsq2"
+      "command": "vsq2"
     },
     {
       "text": "I will ward right",
-      "vgs": "vsq3"
+      "command": "vsq3"
     },
     {
       "text": "I will ward",
-      "vgs": "vsqq"
+      "command": "vsqq"
     },
     {
       "text": "I'm returning left lane",
-      "vgs": "vst1"
+      "command": "vst1"
     },
     {
       "text": "I'm returning middle lane",
-      "vgs": "vst2"
+      "command": "vst2"
     },
     {
       "text": "I'm returnign right lane",
-      "vgs": "vst3"
+      "command": "vst3"
     },
     {
       "text": "I'm returning to base",
-      "vgs": "vstb"
+      "command": "vstb"
     },
     {
       "text": "I have returned",
-      "vgs": "vstt"
+      "command": "vstt"
     },
     {
       "text": "enemies have returned left",
-      "vgs": "vt1"
+      "command": "vt1"
     },
     {
       "text": "enemies have returned middle",
-      "vgs": "vt2"
+      "command": "vt2"
     },
     {
       "text": "enemies have returned right",
-      "vgs": "vt3"
+      "command": "vt3"
     },
     {
       "text": "enemies have returned",
-      "vgs": "vtt"
+      "command": "vtt"
     },
     {
       "text": "ok",
-      "vgs": "vva"
+      "command": "vva"
     },
     {
       "text": "be right back",
-      "vgs": "vvb"
+      "command": "vvb"
     },
     {
       "text": "completed",
-      "vgs": "vvc"
+      "command": "vvc"
     },
     {
       "text": "stepping away for a moment",
-      "vgs": "vvk"
+      "command": "vvk"
     },
     {
       "text": "out of mana",
-      "vgs": "vvm"
+      "command": "vvm"
     },
     {
       "text": "no",
-      "vgs": "vvn"
+      "command": "vvn"
     },
     {
       "text": "please",
-      "vgs": "vvp"
+      "command": "vvp"
     },
     {
       "text": "sorry",
-      "vgs": "vvs"
+      "command": "vvs"
     },
     {
       "text": "thanks",
-      "vgs": "vvt"
+      "command": "vvt"
     },
     {
       "text": "wait",
-      "vgs": "vvw"
+      "command": "vvw"
     },
     {
       "text": "cancel that",
-      "vgs": "vvx"
+      "command": "vvx"
     },
     {
       "text": "yes",
-      "vgs": "vvy"
+      "command": "vvy"
     },
     {
       "text": "bye",
-      "vgs": "vvgb"
+      "command": "vvgb"
     },
     {
       "text": "have fun",
-      "vgs": "vvgf"
+      "command": "vvgf"
     },
     {
       "text": "good game",
-      "vgs": "vvgg"
+      "command": "vvgg"
     },
     {
       "text": "hi",
-      "vgs": "vvgh"
+      "command": "vvgh"
     },
     {
       "text": "good luck",
-      "vgs": "vvgl"
+      "command": "vvgl"
     },
     {
       "text": "nice job",
-      "vgs": "vvgn"
+      "command": "vvgn"
     },
     {
         "text": "oops",
-        "vgs": "vvgo"
+        "command": "vvgo"
     },
     {
       "text": "quiet",
-      "vgs": "vvgq"
+      "command": "vvgq"
     },
     {
       "text": "no problem",
-      "vgs": "vvgr"
+      "command": "vvgr"
     },
     {
       "text": "curses",
-      "vgs": "vvgs"
+      "command": "vvgs"
     },
     {
       "text": "that's too bad",
-      "vgs": "vvgt"
+      "command": "vvgt"
     },
     {
       "text": "you're welcome",
-      "vgs": "vvgw"
+      "command": "vvgw"
     },
     {
       "text": "set up an ambush here",
-      "vgs": "vvva"
+      "command": "vvva"
     },
     {
       "text": "behind us",
-      "vgs": "vvvb"
+      "command": "vvvb"
     },
     {
       "text": "chase the enemy",
-      "vgs": "vvvc"
+      "command": "vvvc"
     },
     {
       "text": "ultimate is down",
-      "vgs": "vvvd"
+      "command": "vvvd"
     },
     {
       "text": "on my way",
-      "vgs": "vvve"
+      "command": "vvve"
     },
     {
       "text": "follow me",
-      "vgs": "vvvf"
+      "command": "vvvf"
     },
     {
       "text": "group up",
-      "vgs": "vvvg"
+      "command": "vvvg"
     },
     {
       "text": "going into the jungle",
-      "vgs": "vvvj"
+      "command": "vvvj"
     },
     {
       "text": "split push",
-      "vgs": "vvvp"
+      "command": "vvvp"
     },
     {
       "text": "ultimate is ready",
-      "vgs": "vvvr"
+      "command": "vvvr"
     },
     {
       "text": "stay here",
-      "vgs": "vvvs"
+      "command": "vvvs"
     },
     {
       "text": "it's a trap",
-      "vgs": "vvvt"
+      "command": "vvvt"
     },
     {
       "text": "place a ward for teleport",
-      "vgs": "vvvw"
+      "command": "vvvw"
     },
     {
       "text": "spread out",
-      "vgs": "vvvx"
+      "command": "vvvx"
     }
   ]
 }

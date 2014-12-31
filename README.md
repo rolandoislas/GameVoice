@@ -55,7 +55,7 @@ The following example will create a command that outputs `vaa` when `*mainComman
 ...
 {
   "text": "attack",
-  "vgs": "vaa"
+  "command": "vaa"
 }
 ...
 ```
