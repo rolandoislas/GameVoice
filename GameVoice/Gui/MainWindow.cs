@@ -1,4 +1,5 @@
 ﻿using GameVoice.Gui;
+using GameVoice.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -89,7 +90,8 @@ namespace GameVoice {
             if(aboveConfidenceThreshold(e.Result.Confidence)) {
                 string command = getCommandFromVoiceResult(e.Result.Text);
                 if (command != null) {
-                    SendKeys.Send(command);
+                    User32 sendInput = new User32();
+                    sendInput.SendInputString(command);
                 }
             }
         }
