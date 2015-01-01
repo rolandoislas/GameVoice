@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GameVoice.Gui;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,17 @@ namespace GameVoice {
 
         public MainWindow() {
             InitializeComponent();
+            initializeRecognizer();
+        }
 
+        private void initializeRecognizer() {
+            initializeRecognizer(true);
+        }
+
+        private void initializeRecognizer(bool firstRun) {
             try {
                 // Create speech engine
-                speechRecognitionEngine = createSpeechEngine("en-US");
+                speechRecognitionEngine = createSpeechEngine("en-US", firstRun);
 
                 // Create events
                 speechRecognitionEngine.AudioLevelUpdated += new EventHandler<AudioLevelUpdatedEventArgs>(engine_AudioLevelUpdated);
@@ -33,6 +41,9 @@ namespace GameVoice {
 
                 // Start listening
                 speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+
+                writeResult("Speech recognition started.", true);
+                writeResult("Now listening for " + GameVoice.configuration.activeGame + " commands.");
             } catch (Exception e) {
                 MessageBox.Show(e.Message + e.StackTrace, "Could not start voice recognition.");
                 Application.Exit();
@@ -42,7 +53,7 @@ namespace GameVoice {
         private void loadGrammar() {
             try {
                 Choices grammarChoices = new Choices();
-                string commandsJson = File.ReadAllText(Path.Combine(Config.configPath, "commands.json"));
+                string commandsJson = File.ReadAllText(Path.Combine(Config.configPath, getCommandsFileName()));
 
                 Dictionary<string, object> commandConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(commandsJson);
                 mainCommand = (String) commandConfig["mainCommand"];
@@ -57,6 +68,16 @@ namespace GameVoice {
             } catch (Exception e) {
                 throw e;
             }
+        }
+
+        private string getCommandsFileName() {
+            string currentGame = "commands-" + GameVoice.configuration.activeGame + ".json";
+            foreach(string fileName in Config.configFileNames) {
+                if(currentGame.Equals(fileName)) {
+                    return fileName;
+                }
+            }
+            throw new Exception("Command file " + currentGame + " not found.");
         }
 
         private string getMainCommand() {
@@ -96,7 +117,7 @@ namespace GameVoice {
             micLevelBar.Value = e.AudioLevel;
         }
 
-        private SpeechRecognitionEngine createSpeechEngine(string culture) {
+        private SpeechRecognitionEngine createSpeechEngine(string culture, bool firstRun) {
             foreach(RecognizerInfo config in SpeechRecognitionEngine.InstalledRecognizers()) {
                 if (config.Culture.ToString().Equals(culture)) {
                     speechRecognitionEngine = new SpeechRecognitionEngine(config);
@@ -105,7 +126,7 @@ namespace GameVoice {
             }
 
             if(speechRecognitionEngine == null) {
-                if(!GameVoice.configuration.disableLanguageCultureNotification) {
+                if(firstRun && !GameVoice.configuration.disableLanguageCultureNotification) {
                     MessageBox.Show("Language " + culture + " not found. Using " + SpeechRecognitionEngine.InstalledRecognizers()[0].Culture.ToString() + ".", "Language " + culture + " not found.");
                 }
                 speechRecognitionEngine = new SpeechRecognitionEngine(SpeechRecognitionEngine.InstalledRecognizers()[0]);
@@ -126,11 +147,24 @@ namespace GameVoice {
         }
 
         private void openConfigurationFile(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, "settings.json"));
+            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, Config.configFileNames[0]));
         }
 
         private void openCommandsFile(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, "commands.json"));
+            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, getCommandsFileName()));
+        }
+
+        private void openGameSwitchWindow(object sender, EventArgs e) {
+            GameSwitchWindow window = new GameSwitchWindow();
+            window.ButtonClicked += new EventHandler(reloadRecognizer);
+            window.ShowDialog();
+        }
+
+        private void reloadRecognizer(object sender, EventArgs e) {
+            speechRecognitionEngine.RecognizeAsyncStop();
+            speechRecognitionEngine = null;
+            commands = new List<Command>();
+            initializeRecognizer(false);
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿{
     "confidenceThreshold": 0.9,
-    "disableLanguageCultureNotification": false
+    "disableLanguageCultureNotification": false,
+    "activeGame": "smite"
 }

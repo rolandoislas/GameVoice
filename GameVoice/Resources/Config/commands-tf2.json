@@ -1,0 +1,101 @@
+﻿{
+  "mainCommand": "tf2 execute",
+  "commands": [
+    {
+      "text": "medic",
+      "command": "z1"
+    },
+    {
+      "text": "thanks",
+      "command": "z2"
+    },
+    {
+      "text": "go go go",
+      "command": "z3"
+    },
+    {
+      "text": "move up",
+      "command": "z4"
+    },
+    {
+      "text": "go left",
+      "command": "z5"
+    },
+    {
+      "text": "go right",
+      "command": "z6"
+    },
+    {
+      "text": "yes",
+      "command": "z7"
+    },
+    {
+      "text": "no",
+      "command": "z8"
+    },
+    {
+      "text": "incoming",
+      "command": "x1"
+    },
+    {
+      "text": "spy",
+      "command": "x2"
+    },
+    {
+      "text": "sentry ahead",
+      "command": "x3"
+    },
+    {
+      "text": "teleporter here",
+      "command": "x4"
+    },
+    {
+      "text": "dispenser here",
+      "command": "x5"
+    },
+    {
+      "text": "sentry gun here",
+      "command": "x6"
+    },
+    {
+      "text": "activate ubercharge",
+      "command": "x7"
+    },
+    {
+      "text": "ubercharge ready",
+      "command": "x8"
+    },
+    {
+      "text": "help",
+      "command": "c1"
+    },
+    {
+      "text": "battle cry",
+      "command": "c2"
+    },
+    {
+      "text": "cheers",
+      "command": "c3"
+    },
+    {
+      "text": "jeers",
+      "command": "c4"
+    },
+    {
+      "text": "positive",
+      "command": "c5"
+    },
+    {
+      "text": "negative",
+      "command": "c6"
+    },
+    {
+      "text": "nice shot",
+      "command": "c7"
+    },
+    {
+      "text": "good job",
+      "command": "c8"
+    }
+  ]
+}

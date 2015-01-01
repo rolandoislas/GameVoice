@@ -45,7 +45,7 @@ namespace GameVoice {
         }
 
         private static void loadConfiguration() {
-            string configFileString = File.ReadAllText(Path.Combine(Config.configPath, "settings.json"));
+            string configFileString = File.ReadAllText(Path.Combine(Config.configPath, Config.configFileNames[0]));
             configuration = JsonConvert.DeserializeObject<Config>(configFileString);
         }
     }

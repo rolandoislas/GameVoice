@@ -37,6 +37,8 @@
             this.editConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.switchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,7 +82,7 @@
             this.editConfigurationToolStripMenuItem,
             this.editCommandsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // editConfigurationToolStripMenuItem
@@ -100,12 +102,28 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameToolStripMenuItem,
             this.optionsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(284, 24);
             this.menuStrip.TabIndex = 3;
             this.menuStrip.Text = "menuStrip";
+            // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.switchGameToolStripMenuItem});
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.gameToolStripMenuItem.Text = "Game";
+            // 
+            // switchGameToolStripMenuItem
+            // 
+            this.switchGameToolStripMenuItem.Name = "switchGameToolStripMenuItem";
+            this.switchGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.switchGameToolStripMenuItem.Text = "Switch Game";
+            this.switchGameToolStripMenuItem.Click += new System.EventHandler(this.openGameSwitchWindow);
             // 
             // MainWindow
             // 
@@ -139,6 +157,8 @@
         private System.Windows.Forms.ToolStripMenuItem editConfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editCommandsToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem switchGameToolStripMenuItem;
     }
 }
 

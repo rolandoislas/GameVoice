@@ -98,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Config.cs" />
+    <Compile Include="Gui\GameSwitchWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\GameSwitchWindow.Designer.cs">
+      <DependentUpon>GameSwitchWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="GameVoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Command.cs" />
+    <EmbeddedResource Include="Gui\GameSwitchWindow.resx">
+      <DependentUpon>GameSwitchWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,8 +141,9 @@
     <Content Include="Resources\Image\Icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Resources\Config\commands.json" />
+    <EmbeddedResource Include="Resources\Config\commands-smite.json" />
     <EmbeddedResource Include="Resources\Config\settings.json" />
+    <EmbeddedResource Include="Resources\Config\commands-tf2.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
