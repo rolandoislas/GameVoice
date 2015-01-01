@@ -7,6 +7,8 @@ GameVoice provides customizable voice activated macros.
 
 ### Default Commands
 
+#### Smite
+
 GameVoice comes with commands used to activate the Smite Voice Guided System (VGS).
 
 Examples:
@@ -14,6 +16,15 @@ Examples:
 - smite execute attack (VAA)
 - smite execute defend (VDD)
 - smite execute good game (VVGG)
+
+#### Team Fortress 2
+
+GameVoice can be used to activate Team Fortress 2's in-game vocal emotes.
+
+Examples:
+
+- tf2 execute medic (z1)
+- tf2 execute thanks (z2)
 
 ### Settings
 
