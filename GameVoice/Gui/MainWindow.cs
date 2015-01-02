@@ -93,6 +93,8 @@ namespace GameVoice {
                     User32 sendInput = new User32();
                     sendInput.SendInputString(command);
                 }
+            } else if(e.Result.Confidence > GameVoice.configuration.failAlertThreshold) {
+                System.Media.SystemSounds.Beep.Play();
             }
         }
 

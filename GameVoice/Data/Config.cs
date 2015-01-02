@@ -16,6 +16,7 @@ namespace GameVoice {
         public float confidenceThreshold { get; set; }
         public bool disableLanguageCultureNotification { get; set; }
         public string activeGame { get; set; }
+        public float failAlertThreshold { get; set; }
 
     }
 }
