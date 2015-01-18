@@ -71,6 +71,8 @@ The following example will create a command that outputs `vaa` when `*mainComman
 ...
 ```
 
+See [INPUTS.md](INPUTS.md)  for a list of non-alphanumeric inputs.
+
 ## License
 
 GameVoice
