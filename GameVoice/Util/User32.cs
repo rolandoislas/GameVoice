@@ -11,49 +11,80 @@ namespace GameVoice.Util {
         #region sendInputString
         public void SendInputString(string inputString) {
             List<INPUT> input = new List<INPUT>();
-            foreach(char letter in inputString) {
-                ScanCodeShort scanCodeShort = getScanCodeShort(letter.ToString());
-                VirtualKeyShort virtualKeyShort = getVirtualKeyShort(letter.ToString());
-                input.Add(
-                        new INPUT() {
-                            type = (ushort)1,
-                            U = new InputUnion() {
-                                ki = new KEYBDINPUT() {
-                                    wScan = scanCodeShort,
-                                    wVk = virtualKeyShort
-                                }
-                            }
-                        }
-                    );
-                input.Add(
-                        new INPUT() {
-                            type = (ushort)1,
-                            U = new InputUnion() {
-                                ki = new KEYBDINPUT() {
-                                    wScan = scanCodeShort,
-                                    wVk = virtualKeyShort,
-                                    dwFlags = KEYEVENTF.KEYUP
-                                }
-                            }
-                        }
-                    );
+            for (int i = 0; i < inputString.Length; i++) {
+                int[] specialKeyBounds = checkSpecialKey(inputString, inputString.Substring(i, 1), ref i);
+                if(specialKeyBounds != null) {
+                    addInputToArray(ref input, inputString.Substring(specialKeyBounds[0], specialKeyBounds[1]));
+                } else {
+                    addInputToArray(ref input, inputString.Substring(i, 1));
+                }
             }
             var inputArray = input.ToArray();
             SendInput((ushort)inputArray.Length, inputArray, INPUT.Size);
         }
 
-        private VirtualKeyShort getVirtualKeyShort(string letter) {
+        private int[] checkSpecialKey(string inputString, string letter, ref int increment) {
+            int[] output = null;
+            int i = increment;
+            if (letter.Equals("{")) {
+                i++;
+                do {
+                    i++;
+                } while (!inputString.Substring(i, 1).Equals("}"));
+                output = new int[] {increment + 1, i - increment - 1};
+                increment = i;
+            }
+            return output;
+        }
+
+        private void addInputToArray(ref List<INPUT> input, string keyString) {
+            bool isLetter = keyString.Length > 1 ? false : true;
+            bool keyUp = keyString.Contains("/");
+            keyString = keyString.Replace("/", String.Empty);
+            ScanCodeShort scanCodeShort = getScanCodeShort(keyString, isLetter);
+            VirtualKeyShort virtualKeyShort = getVirtualKeyShort(keyString, isLetter);
+ 
+            if(!keyUp || isLetter) {
+                input.Add(
+                    new INPUT() {
+                        type = (ushort)1,
+                        U = new InputUnion() {
+                            ki = new KEYBDINPUT() {
+                                wScan = scanCodeShort,
+                                wVk = virtualKeyShort
+                            }
+                        }
+                    }
+                );
+            }
+            if(keyUp || isLetter) {
+                input.Add(
+                    new INPUT() {
+                        type = (ushort)1,
+                        U = new InputUnion() {
+                            ki = new KEYBDINPUT() {
+                                wScan = scanCodeShort,
+                                wVk = virtualKeyShort,
+                                dwFlags = KEYEVENTF.KEYUP
+                            }
+                        }
+                    }
+                );
+            }
+        }
+
+        private VirtualKeyShort getVirtualKeyShort(string keyString, bool isLetter) {
             foreach (VirtualKeyShort key in (VirtualKeyShort[])Enum.GetValues(typeof(VirtualKeyShort))) {
-                if (key.ToString().Equals("KEY_" + letter.ToString().ToUpper())) {
+                if (key.ToString().Equals((isLetter ? "KEY_" : "") + keyString.ToUpper())) {
                     return key;
                 }
             }
             return VirtualKeyShort.KEY_0;
         }
 
-        private ScanCodeShort getScanCodeShort(string letter) {
+        private ScanCodeShort getScanCodeShort(string keyString, bool isLetter) {
             foreach (ScanCodeShort key in (ScanCodeShort[])Enum.GetValues(typeof(ScanCodeShort))) {
-                if(key.ToString().Equals("KEY_" + letter.ToString().ToUpper())) {
+                if(key.ToString().Equals((isLetter ? "KEY_" : "") + keyString.ToUpper())) {
                     return key;
                 }
             }
