@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameVoice.Util {
@@ -13,14 +14,34 @@ namespace GameVoice.Util {
             List<INPUT> input = new List<INPUT>();
             for (int i = 0; i < inputString.Length; i++) {
                 int[] specialKeyBounds = checkSpecialKey(inputString, inputString.Substring(i, 1), ref i);
-                if(specialKeyBounds != null) {
+                bool customCommand = specialKeyBounds != null ? isCustomCommand(inputString, specialKeyBounds, ref i) : false;
+                if(!customCommand && specialKeyBounds != null) {
                     addInputToArray(ref input, inputString.Substring(specialKeyBounds[0], specialKeyBounds[1]));
-                } else {
+                } else if(!customCommand) {
                     addInputToArray(ref input, inputString.Substring(i, 1));
                 }
             }
             var inputArray = input.ToArray();
             SendInput((ushort)inputArray.Length, inputArray, INPUT.Size);
+        }
+
+        private bool isCustomCommand(string inputString, int[] bounds, ref int i) {
+            string[] splitString = inputString.Substring(bounds[0], bounds[1]).ToLower().Split(':');
+            switch(splitString[0]) {
+                case "pause":
+                    i = inputString.Length;
+                    inputString = inputString.Substring(bounds[0] + bounds[1] + 1);
+                    int delay = splitString.Length > 1 ? int.Parse(splitString[1]) : 100;
+                    Thread pauseThread = new Thread(() => commandThreadPause(inputString, delay));
+                    pauseThread.Start();
+                    return true;
+            }
+            return false;
+        }
+
+        private void commandThreadPause(string inputString, int delay) {
+            Thread.Sleep(delay);
+            SendInputString(inputString);
         }
 
         private int[] checkSpecialKey(string inputString, string letter, ref int increment) {
