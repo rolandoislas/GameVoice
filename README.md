@@ -38,6 +38,14 @@ Value: A float between 0.0 and 1.0
 
 This specifies how confident the recognizer must be before a command will be executed.
 
+#### failAlertThreshold
+
+Value: Float between 0.0 and 1.0
+
+GameVoice will play a sound if speech is recognized, but fails to pass the confidence threshold. This options allows the user to set the alert threshold for failed recognition.
+
+Set to 1.0 to disable the fail alert sound.
+
 #### disableLanguageCultureNotification
 
 Value: Boolean
@@ -71,7 +79,19 @@ The following example will create a command that outputs `vaa` when `*mainComman
 ...
 ```
 
-See [INPUTS.md](INPUTS.md)  for a list of non-alphanumeric inputs.
+See [INPUTS.md](INPUTS.md)  for a list of non-alphanumeric key inputs.
+
+#### Extra Commands
+
+Extra commands are commands surrounded in curly brackets. These add extra functionality to commands that can be executed.
+
+```
+...
+"command": "{extraCommand}"
+...
+```
+
+See [EXTRA_COMMANDS.md](EXTRA_COMMANDS.md) for a list of extra commands.
 
 ## License
 
