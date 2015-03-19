@@ -1,3 +1,7 @@
 # residual visual studio files
 .nuget/
 GameVoice/
+
+#jekyll
+_site/
+*.lock
