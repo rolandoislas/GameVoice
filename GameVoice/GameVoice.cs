@@ -31,7 +31,7 @@ namespace GameVoice {
                 foreach(var fileName in typeof(ConfigFiles).GetFields()) {
                     string filePath = Path.Combine(Config.configPath, (string)fileName.GetValue(fileName));
                     if (!File.Exists(filePath)) {
-                        Stream fileInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config." + fileName);
+                        Stream fileInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config." + fileName.GetValue(fileName));
                         FileStream fileOutput = new FileStream(filePath, FileMode.Create);
                         fileInput.CopyTo(fileOutput);
                         fileOutput.Close();
