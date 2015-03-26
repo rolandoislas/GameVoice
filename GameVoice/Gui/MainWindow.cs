@@ -46,7 +46,8 @@ namespace GameVoice {
                 writeResult("Speech recognition started.", true);
                 writeResult("Now listening for " + GameVoice.configuration.activeGame + " commands.");
             } catch (Exception e) {
-                MessageBox.Show(e.Message + e.StackTrace, "Could not start voice recognition.");
+                Console.WriteLine(e.StackTrace);
+                MessageBox.Show(e.Message, "Could not start voice recognition.");
                 Application.Exit();
             }
         }
@@ -66,9 +67,10 @@ namespace GameVoice {
 
                 Grammar grammarList = new Grammar(new GrammarBuilder(grammarChoices));
                 speechRecognitionEngine.LoadGrammar(grammarList);
-            } catch (Exception e) {
-                throw e;
+            } catch (Exception) {
+                throw;
             }
+            return true;
         }
 
         private string getCommandsFileName() {
