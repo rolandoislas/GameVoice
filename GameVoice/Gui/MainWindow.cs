@@ -35,13 +35,18 @@ namespace GameVoice {
                 speechRecognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(engine_SpeechRecognized);
 
                 // Load dictionary
-                loadGrammar();
+                bool grammarLoaded = loadGrammar();
 
-                // Use default microphone
-                speechRecognitionEngine.SetInputToDefaultAudioDevice();
+                if (grammarLoaded) {
+                    // Use default microphone
+                    speechRecognitionEngine.SetInputToDefaultAudioDevice();
 
-                // Start listening
-                speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+                    // Start listening
+                    speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+                } else {
+                    speechRecognitionEngine.Dispose();
+                }
+                
 
                 writeResult("Speech recognition started.", true);
                 writeResult("Now listening for " + GameVoice.configuration.activeGame + " commands.");
@@ -52,13 +57,17 @@ namespace GameVoice {
             }
         }
 
-        private void loadGrammar() {
+        private bool loadGrammar() {
             try {
                 Choices grammarChoices = new Choices();
                 string commandsJson = File.ReadAllText(Path.Combine(Config.configPath, getCommandsFileName()));
 
                 Dictionary<string, object> commandConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(commandsJson);
                 mainCommand = (String) commandConfig["mainCommand"];
+
+                if (((JArray)commandConfig["commands"]).Count == 0)
+                    return false;
+
                 foreach (object command in (JArray)commandConfig["commands"]) {
                     Command singleCommand = JsonConvert.DeserializeObject<Command>(command.ToString());
                     this.commands.Add(singleCommand);
