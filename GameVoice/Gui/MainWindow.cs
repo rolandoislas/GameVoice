@@ -44,10 +44,9 @@ namespace GameVoice {
                     // Start listening
                     speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
                 } else {
-                    speechRecognitionEngine.Dispose();
+                    speechRecognitionEngine = null;
                 }
                 
-
                 writeResult("Speech recognition started.", true);
                 writeResult("Now listening for " + GameVoice.configuration.activeGame + " commands.");
             } catch (Exception e) {
@@ -176,7 +175,8 @@ namespace GameVoice {
         }
 
         private void reloadRecognizer(object sender, EventArgs e) {
-            speechRecognitionEngine.RecognizeAsyncStop();
+            if (speechRecognitionEngine != null)
+                speechRecognitionEngine.RecognizeAsyncStop();
             speechRecognitionEngine = null;
             commands = new List<Command>();
             initializeRecognizer(false);
