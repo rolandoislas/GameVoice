@@ -145,6 +145,7 @@
     <EmbeddedResource Include="Resources\Config\commands-smite.json" />
     <EmbeddedResource Include="Resources\Config\settings.json" />
     <EmbeddedResource Include="Resources\Config\commands-tf2.json" />
+    <EmbeddedResource Include="Resources\Config\commands-lol.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
