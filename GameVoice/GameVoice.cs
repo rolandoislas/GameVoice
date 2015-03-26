@@ -28,8 +28,8 @@ namespace GameVoice {
             try {
                 Directory.CreateDirectory(Config.configPath);
 
-                foreach(string fileName in Config.configFileNames) {
-                    string filePath = Path.Combine(Config.configPath, fileName);
+                foreach(var fileName in typeof(ConfigFiles).GetFields()) {
+                    string filePath = Path.Combine(Config.configPath, (string)fileName.GetValue(fileName));
                     if (!File.Exists(filePath)) {
                         Stream fileInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config." + fileName);
                         FileStream fileOutput = new FileStream(filePath, FileMode.Create);
@@ -45,7 +45,7 @@ namespace GameVoice {
         }
 
         private static void loadConfiguration() {
-            string configFileString = File.ReadAllText(Path.Combine(Config.configPath, Config.configFileNames[0]));
+            string configFileString = File.ReadAllText(Path.Combine(Config.configPath, ConfigFiles.SETTINGS));
             configuration = JsonConvert.DeserializeObject<Config>(configFileString);
         }
     }

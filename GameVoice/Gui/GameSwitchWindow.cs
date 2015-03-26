@@ -29,7 +29,7 @@ namespace GameVoice.Gui {
         }
 
         private void updateSettingsJson(string game) {
-            string settingsFilePath = Path.Combine(Config.configPath, Config.configFileNames[0]);
+            string settingsFilePath = Path.Combine(Config.configPath, ConfigFiles.SETTINGS);
             
             JObject config = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(settingsFilePath));
             config.Property("activeGame").Value = game;

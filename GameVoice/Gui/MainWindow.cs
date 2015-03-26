@@ -73,9 +73,9 @@ namespace GameVoice {
 
         private string getCommandsFileName() {
             string currentGame = "commands-" + GameVoice.configuration.activeGame + ".json";
-            foreach(string fileName in Config.configFileNames) {
-                if(currentGame.Equals(fileName)) {
-                    return fileName;
+            foreach(var configFile in typeof(ConfigFiles).GetFields()) {
+                if(currentGame.Equals(configFile.GetValue(configFile))) {
+                    return (string)configFile.GetValue(configFile);
                 }
             }
             throw new Exception("Command file " + currentGame + " not found.");
@@ -151,7 +151,7 @@ namespace GameVoice {
         }
 
         private void openConfigurationFile(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, Config.configFileNames[0]));
+            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, ConfigFiles.SETTINGS));
         }
 
         private void openCommandsFile(object sender, EventArgs e) {
