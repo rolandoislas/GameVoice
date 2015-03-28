@@ -29,8 +29,8 @@ namespace GameVoice {
             // Jungle timer checked
             jungleTimerToolStripMenuItem.Checked = GameVoice.configurationGame.jungleTimer["userEnabled"].Value<bool>();
             // Display jungle timer window
-            jungleTimer = new JungleTimerWindow();
             if (GameVoice.configurationGame.jungleTimer["userEnabled"].Value<bool>()) {
+                jungleTimer = new JungleTimerWindow();
                 jungleTimer.Show();
             } else {
                 jungleTimer.Dispose();
