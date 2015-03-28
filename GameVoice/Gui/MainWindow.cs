@@ -32,7 +32,7 @@ namespace GameVoice {
             if (GameVoice.configurationGame.jungleTimer["userEnabled"].Value<bool>()) {
                 jungleTimer = new JungleTimerWindow();
                 jungleTimer.Show();
-            } else {
+            } else if (jungleTimer != null) {
                 jungleTimer.Dispose();
             }
         }
