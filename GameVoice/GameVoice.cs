@@ -10,6 +10,7 @@ namespace GameVoice {
     static class GameVoice {
 
         public static Config configuration;
+        public static ConfigGame configurationGame;
 
         /// <summary>
         /// The main entry point for the application.
@@ -44,9 +45,26 @@ namespace GameVoice {
             }
         }
 
-        private static void loadConfiguration() {
+        public static void loadConfiguration() {
+            // Main settings
             string configFileString = File.ReadAllText(Path.Combine(Config.configPath, ConfigFiles.SETTINGS));
             configuration = JsonConvert.DeserializeObject<Config>(configFileString);
+
+            // Game specific settings
+            string configName = "";
+            switch (configuration.activeGame) {
+                case "smite":
+                    configName = ConfigFiles.SETTINGS_SMITE;
+                    break;
+                case "tf2":
+                    configName = ConfigFiles.SETTINGS_TF2;
+                    break;
+                case "lol":
+                    configName = ConfigFiles.SETTINGS_LOL;
+                    break;
+            }
+            configFileString = File.ReadAllText(Path.Combine(Config.configPath, configName));
+            configurationGame = JsonConvert.DeserializeObject<ConfigGame>(configFileString);
         }
     }
 }

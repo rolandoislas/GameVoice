@@ -15,10 +15,26 @@ namespace GameVoice {
         private SpeechRecognitionEngine speechRecognitionEngine = null;
         List<Command> commands = new List<Command>();
         private string mainCommand =  "";
+        private JungleTimerWindow jungleTimer;
 
         public MainWindow() {
             InitializeComponent();
+            initializeWindow();
             initializeRecognizer();
+        }
+
+        private void initializeWindow() {
+            // Jungle timer displayed
+            jungleTimerToolStripMenuItem.Visible = GameVoice.configurationGame.jungleTimer["active"].Value<bool>();
+            // Jungle timer checked
+            jungleTimerToolStripMenuItem.Checked = GameVoice.configurationGame.jungleTimer["userEnabled"].Value<bool>();
+            // Display jungle timer window
+            jungleTimer = new JungleTimerWindow();
+            if (GameVoice.configurationGame.jungleTimer["userEnabled"].Value<bool>()) {
+                jungleTimer.Show();
+            } else {
+                jungleTimer.Dispose();
+            }
         }
 
         private void initializeRecognizer() {
@@ -180,6 +196,33 @@ namespace GameVoice {
             speechRecognitionEngine = null;
             commands = new List<Command>();
             initializeRecognizer(false);
+            GameVoice.loadConfiguration();
+            initializeWindow();
+        }
+
+        private void toggleJungle(object sender, EventArgs e) {
+            jungleTimerToolStripMenuItem.Checked = !jungleTimerToolStripMenuItem.Checked;
+
+            string configFileName = null;
+            switch (GameVoice.configuration.activeGame) {
+                case "smite":
+                    configFileName = ConfigFiles.SETTINGS_SMITE;
+                    break;
+                case "tf2":
+                    configFileName = ConfigFiles.SETTINGS_TF2;
+                    break;
+                case "lol":
+                    configFileName = ConfigFiles.SETTINGS_LOL;
+                    break;
+            }
+            string settingsFilePath = Path.Combine(Config.configPath, configFileName);
+            JObject config = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(settingsFilePath));
+            config["jungleTimer"]["userEnabled"] = jungleTimerToolStripMenuItem.Checked;
+            string configSerialized = JsonConvert.SerializeObject(config, Formatting.Indented);
+            File.WriteAllText(settingsFilePath, configSerialized);
+
+            GameVoice.loadConfiguration();
+            initializeWindow();
         }
 
     }

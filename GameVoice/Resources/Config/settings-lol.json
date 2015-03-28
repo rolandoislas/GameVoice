@@ -1,0 +1,14 @@
+﻿{
+  "jungleTimer": {
+    "active": true,
+    "userEnabled": false,
+    "time": {
+      "krugs": 100,
+      "red": 300,
+      "blue": 300,
+      "gromp": 100,
+      "wolves": 100,
+      "raptor": 100
+    }
+  }
+}
