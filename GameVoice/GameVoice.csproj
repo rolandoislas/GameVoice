@@ -121,6 +121,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Command.cs" />
     <Compile Include="Util\User32.cs" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-baron.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Image\jungle-lol-dragon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Image\jungle-lol-blue.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-gromp.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-raptor.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-red.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-wolves.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-krugs.png" />
     <EmbeddedResource Include="Gui\GameSwitchWindow.resx">
       <DependentUpon>GameSwitchWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +150,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

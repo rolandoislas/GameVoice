@@ -23,24 +23,30 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.components = new System.ComponentModel.Container();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(284, 71);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(284, 94);
+            this.flowLayoutPanel.TabIndex = 0;
+            // 
+            // toolTip
+            // 
+            this.toolTip.ShowAlways = true;
             // 
             // JungleTimerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Lime;
-            this.ClientSize = new System.Drawing.Size(284, 70);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(284, 106);
             this.ControlBox = false;
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "JungleTimerWindow";
             this.ShowIcon = false;
@@ -48,14 +54,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "JungleTimerWindow";
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.Color.Lime;
+            this.TransparencyKey = System.Drawing.Color.Black;
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.ToolTip toolTip;
 
     }
 }
