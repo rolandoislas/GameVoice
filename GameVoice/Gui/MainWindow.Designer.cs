@@ -39,6 +39,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.switchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.jungleTimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +84,7 @@
             this.editConfigurationToolStripMenuItem,
             this.editCommandsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // editConfigurationToolStripMenuItem
@@ -113,7 +115,9 @@
             // gameToolStripMenuItem
             // 
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.switchGameToolStripMenuItem});
+            this.switchGameToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.jungleTimerToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.gameToolStripMenuItem.Text = "Game";
@@ -124,6 +128,18 @@
             this.switchGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.switchGameToolStripMenuItem.Text = "Switch Game";
             this.switchGameToolStripMenuItem.Click += new System.EventHandler(this.openGameSwitchWindow);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // jungleTimerToolStripMenuItem
+            // 
+            this.jungleTimerToolStripMenuItem.Name = "jungleTimerToolStripMenuItem";
+            this.jungleTimerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.jungleTimerToolStripMenuItem.Text = "Jungle Timer";
+            this.jungleTimerToolStripMenuItem.Click += new System.EventHandler(this.toggleJungle);
             // 
             // MainWindow
             // 
@@ -159,6 +175,8 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem switchGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem jungleTimerToolStripMenuItem;
     }
 }
 

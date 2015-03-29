@@ -15,10 +15,26 @@ namespace GameVoice {
         private SpeechRecognitionEngine speechRecognitionEngine = null;
         List<Command> commands = new List<Command>();
         private string mainCommand =  "";
+        private JungleTimerWindow jungleTimer;
 
         public MainWindow() {
             InitializeComponent();
+            initializeWindow();
             initializeRecognizer();
+        }
+
+        private void initializeWindow() {
+            // Jungle timer displayed
+            jungleTimerToolStripMenuItem.Visible = GameVoice.configurationGame.jungleTimer["active"].Value<bool>();
+            // Jungle timer checked
+            jungleTimerToolStripMenuItem.Checked = GameVoice.configurationGame.jungleTimer["userEnabled"].Value<bool>();
+            // Display jungle timer window
+            if (GameVoice.configurationGame.jungleTimer["userEnabled"].Value<bool>()) {
+                jungleTimer = new JungleTimerWindow();
+                jungleTimer.Show();
+            } else if (jungleTimer != null) {
+                jungleTimer.Dispose();
+            }
         }
 
         private void initializeRecognizer() {
@@ -35,29 +51,38 @@ namespace GameVoice {
                 speechRecognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(engine_SpeechRecognized);
 
                 // Load dictionary
-                loadGrammar();
+                bool grammarLoaded = loadGrammar();
 
-                // Use default microphone
-                speechRecognitionEngine.SetInputToDefaultAudioDevice();
+                if (grammarLoaded) {
+                    // Use default microphone
+                    speechRecognitionEngine.SetInputToDefaultAudioDevice();
 
-                // Start listening
-                speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
-
+                    // Start listening
+                    speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+                } else {
+                    speechRecognitionEngine = null;
+                }
+                
                 writeResult("Speech recognition started.", true);
                 writeResult("Now listening for " + GameVoice.configuration.activeGame + " commands.");
             } catch (Exception e) {
-                MessageBox.Show(e.Message + e.StackTrace, "Could not start voice recognition.");
+                Console.WriteLine(e.StackTrace);
+                MessageBox.Show(e.Message, "Could not start voice recognition.");
                 Application.Exit();
             }
         }
 
-        private void loadGrammar() {
+        private bool loadGrammar() {
             try {
                 Choices grammarChoices = new Choices();
                 string commandsJson = File.ReadAllText(Path.Combine(Config.configPath, getCommandsFileName()));
 
                 Dictionary<string, object> commandConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(commandsJson);
                 mainCommand = (String) commandConfig["mainCommand"];
+
+                if (((JArray)commandConfig["commands"]).Count == 0)
+                    return false;
+
                 foreach (object command in (JArray)commandConfig["commands"]) {
                     Command singleCommand = JsonConvert.DeserializeObject<Command>(command.ToString());
                     this.commands.Add(singleCommand);
@@ -66,16 +91,17 @@ namespace GameVoice {
 
                 Grammar grammarList = new Grammar(new GrammarBuilder(grammarChoices));
                 speechRecognitionEngine.LoadGrammar(grammarList);
-            } catch (Exception e) {
-                throw e;
+            } catch (Exception) {
+                throw;
             }
+            return true;
         }
 
         private string getCommandsFileName() {
             string currentGame = "commands-" + GameVoice.configuration.activeGame + ".json";
-            foreach(string fileName in Config.configFileNames) {
-                if(currentGame.Equals(fileName)) {
-                    return fileName;
+            foreach(var configFile in typeof(ConfigFiles).GetFields()) {
+                if(currentGame.Equals(configFile.GetValue(configFile))) {
+                    return (string)configFile.GetValue(configFile);
                 }
             }
             throw new Exception("Command file " + currentGame + " not found.");
@@ -151,7 +177,7 @@ namespace GameVoice {
         }
 
         private void openConfigurationFile(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, Config.configFileNames[0]));
+            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, ConfigFiles.SETTINGS));
         }
 
         private void openCommandsFile(object sender, EventArgs e) {
@@ -165,10 +191,38 @@ namespace GameVoice {
         }
 
         private void reloadRecognizer(object sender, EventArgs e) {
-            speechRecognitionEngine.RecognizeAsyncStop();
+            if (speechRecognitionEngine != null)
+                speechRecognitionEngine.RecognizeAsyncStop();
             speechRecognitionEngine = null;
             commands = new List<Command>();
             initializeRecognizer(false);
+            GameVoice.loadConfiguration();
+            initializeWindow();
+        }
+
+        private void toggleJungle(object sender, EventArgs e) {
+            jungleTimerToolStripMenuItem.Checked = !jungleTimerToolStripMenuItem.Checked;
+
+            string configFileName = null;
+            switch (GameVoice.configuration.activeGame) {
+                case "smite":
+                    configFileName = ConfigFiles.SETTINGS_SMITE;
+                    break;
+                case "tf2":
+                    configFileName = ConfigFiles.SETTINGS_TF2;
+                    break;
+                case "lol":
+                    configFileName = ConfigFiles.SETTINGS_LOL;
+                    break;
+            }
+            string settingsFilePath = Path.Combine(Config.configPath, configFileName);
+            JObject config = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(settingsFilePath));
+            config["jungleTimer"]["userEnabled"] = jungleTimerToolStripMenuItem.Checked;
+            string configSerialized = JsonConvert.SerializeObject(config, Formatting.Indented);
+            File.WriteAllText(settingsFilePath, configSerialized);
+
+            GameVoice.loadConfiguration();
+            initializeWindow();
         }
 
     }

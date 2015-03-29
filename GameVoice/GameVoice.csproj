@@ -98,11 +98,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Config.cs" />
+    <Compile Include="Data\ConfigGame.cs" />
     <Compile Include="Gui\GameSwitchWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Gui\GameSwitchWindow.Designer.cs">
       <DependentUpon>GameSwitchWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\JungleTimerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\JungleTimerWindow.Designer.cs">
+      <DependentUpon>JungleTimerWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\MainWindow.cs">
       <SubType>Form</SubType>
@@ -114,8 +121,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Command.cs" />
     <Compile Include="Util\User32.cs" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-baron.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Image\jungle-lol-dragon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Image\jungle-lol-blue.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-gromp.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-raptor.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-red.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-wolves.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-lol-krugs.png" />
     <EmbeddedResource Include="Gui\GameSwitchWindow.resx">
       <DependentUpon>GameSwitchWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\JungleTimerWindow.resx">
+      <DependentUpon>JungleTimerWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -128,6 +150,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -145,6 +168,10 @@
     <EmbeddedResource Include="Resources\Config\commands-smite.json" />
     <EmbeddedResource Include="Resources\Config\settings.json" />
     <EmbeddedResource Include="Resources\Config\commands-tf2.json" />
+    <EmbeddedResource Include="Resources\Config\commands-lol.json" />
+    <EmbeddedResource Include="Resources\Config\settings-lol.json" />
+    <EmbeddedResource Include="Resources\Config\settings-smite.json" />
+    <EmbeddedResource Include="Resources\Config\settings-tf2.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
