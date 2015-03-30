@@ -90,12 +90,12 @@ namespace GameVoice.Gui {
                 Image image = Bitmap.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Image." + "jungle-" + GameVoice.configuration.activeGame + "-" + time.Name + ".png"));
 
                 PictureBox monsterImage = new PictureBox();
-                monsterImage.BackgroundImage = image;
+                monsterImage.Image = image;
                 monsterImage.Margin = new Padding(0);
                 monsterImage.Size = new Size((int)(Screen.PrimaryScreen.Bounds.Width * 0.025), (int)(Screen.PrimaryScreen.Bounds.Height * (2D/45D)));
                 monsterImage.Name = "monsterImage" + time.Name;
                 monsterImage.Click += new System.EventHandler(timerClicked);
-                monsterImage.BackgroundImageLayout = ImageLayout.Stretch;
+                monsterImage.SizeMode = PictureBoxSizeMode.StretchImage;
 
                 this.toolTip.SetToolTip(monsterImage, time.Name.Substring(0, 1).ToUpper() + time.Name.Substring(1));
                 this.flowLayoutPanel.Controls.Add(monsterImage);
