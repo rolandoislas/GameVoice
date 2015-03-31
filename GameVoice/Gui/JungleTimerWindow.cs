@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GameVoice.Gui.Control;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace GameVoice.Gui {
     public partial class JungleTimerWindow : Form {
 
         private Dictionary<string, int[]> timers = new Dictionary<string, int[]>();
+        private int[] controlMargin = { 5, 3, 5, 5 };
+        private int[] controlSize = { (int)(Screen.PrimaryScreen.Bounds.Width * 0.025), (int)(Screen.PrimaryScreen.Bounds.Height * (2D / 45D)) };
+        private int leftMargin = (int)(Screen.PrimaryScreen.Bounds.Width * 0.03);
+
         private enum stateCode {
             RESET = 0, // Timer not countign down
             DOWN = 1 // Timer counting down
@@ -82,17 +87,14 @@ namespace GameVoice.Gui {
         }
 
         private void initializeIndicators() {
-            // Set window and panel to screen size
-            this.flowLayoutPanel.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            this.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             // Add monster Images
             foreach (JProperty time in GameVoice.configurationGame.jungleTimer["time"]) {
                 Image image = Bitmap.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Image." + "jungle-" + GameVoice.configuration.activeGame + "-" + time.Name + ".png"));
 
                 PictureBox monsterImage = new PictureBox();
                 monsterImage.Image = image;
-                monsterImage.Margin = new Padding(0);
-                monsterImage.Size = new Size((int)(Screen.PrimaryScreen.Bounds.Width * 0.025), (int)(Screen.PrimaryScreen.Bounds.Height * (2D/45D)));
+                monsterImage.Margin = new Padding(controlMargin[0], controlMargin[1], controlMargin[2], controlMargin[3]);
+                monsterImage.Size = new Size(controlSize[0], controlSize[1]);
                 monsterImage.Name = "monsterImage" + time.Name;
                 monsterImage.Click += new System.EventHandler(timerClicked);
                 monsterImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -105,14 +107,30 @@ namespace GameVoice.Gui {
                 Label label = new Label();
                 label.AutoSize = false;
                 label.Margin = new Padding(0);
-                label.Size = new Size((int)(Screen.PrimaryScreen.Bounds.Width * 0.025), (int)(Screen.PrimaryScreen.Bounds.Height * (2D / 45D)));
+                label.Size = new Size(controlSize[0], controlSize[1]);
                 label.Text = "";
                 label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
                 label.ForeColor = Color.White;
                 label.Name = "timeLabel" + time.Name;
+                label.Width = controlSize[0] + controlMargin[0] + controlMargin[2];
+                label.Height = controlSize[1] + controlMargin[1] + controlMargin[3];
+                label.BackColor = Color.Transparent;
 
                 this.flowLayoutPanel.Controls.Add(label);
             }
+            // Set window to screen size
+            this.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            // Set flow panel size
+            this.flowLayoutPanel.Size = new Size(GameVoice.configurationGame.jungleTimer["time"].ToArray().Length * (controlSize[0] + controlMargin[0] + controlMargin[2]), Screen.PrimaryScreen.Bounds.Height);
+            // Add left margin to panel
+            this.flowLayoutPanel.Location = new Point(leftMargin, 0);
+            // Add backgroud to panel
+            Image backgroundMonsterImage = Bitmap.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Image." + "jungle-" + GameVoice.configuration.activeGame + "-monster-background.png"));
+            Image backgroundTimerImage = Bitmap.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Image." + "jungle-" + GameVoice.configuration.activeGame + "-monster-timer-background.png"));
+            int test = backgroundTimerImage.Width;
+            this.flowLayoutPanel.setImage(new Image[]{backgroundMonsterImage, backgroundTimerImage}, GameVoice.configurationGame.jungleTimer["time"].ToArray().Length);
+            this.flowLayoutPanel.BackgroundImageLayout = ImageLayout.None;
+            // Break flow of last image
             string lastTimerName = ((JProperty)GameVoice.configurationGame.jungleTimer["time"].Last).Name;
             this.flowLayoutPanel.SetFlowBreak(flowLayoutPanel.Controls.Find("monsterImage" + lastTimerName, false)[0], true);
         }

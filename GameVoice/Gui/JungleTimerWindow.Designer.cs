@@ -43,7 +43,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Lime;
             this.ClientSize = new System.Drawing.Size(284, 106);
             this.ControlBox = false;
             this.Controls.Add(this.flowLayoutPanel);
@@ -54,7 +54,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "JungleTimerWindow";
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.Color.Black;
+            this.TransparencyKey = System.Drawing.Color.Lime;
             this.ResumeLayout(false);
 
         }
