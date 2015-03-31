@@ -10,6 +10,7 @@ namespace GameVoice {
     static class GameVoice {
 
         public static Config configuration;
+        public static ConfigGame configurationGame;
 
         /// <summary>
         /// The main entry point for the application.
@@ -28,10 +29,10 @@ namespace GameVoice {
             try {
                 Directory.CreateDirectory(Config.configPath);
 
-                foreach(string fileName in Config.configFileNames) {
-                    string filePath = Path.Combine(Config.configPath, fileName);
+                foreach(var fileName in typeof(ConfigFiles).GetFields()) {
+                    string filePath = Path.Combine(Config.configPath, (string)fileName.GetValue(fileName));
                     if (!File.Exists(filePath)) {
-                        Stream fileInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config." + fileName);
+                        Stream fileInput = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Config." + fileName.GetValue(fileName));
                         FileStream fileOutput = new FileStream(filePath, FileMode.Create);
                         fileInput.CopyTo(fileOutput);
                         fileOutput.Close();
@@ -44,9 +45,26 @@ namespace GameVoice {
             }
         }
 
-        private static void loadConfiguration() {
-            string configFileString = File.ReadAllText(Path.Combine(Config.configPath, Config.configFileNames[0]));
+        public static void loadConfiguration() {
+            // Main settings
+            string configFileString = File.ReadAllText(Path.Combine(Config.configPath, ConfigFiles.SETTINGS));
             configuration = JsonConvert.DeserializeObject<Config>(configFileString);
+
+            // Game specific settings
+            string configName = "";
+            switch (configuration.activeGame) {
+                case "smite":
+                    configName = ConfigFiles.SETTINGS_SMITE;
+                    break;
+                case "tf2":
+                    configName = ConfigFiles.SETTINGS_TF2;
+                    break;
+                case "lol":
+                    configName = ConfigFiles.SETTINGS_LOL;
+                    break;
+            }
+            configFileString = File.ReadAllText(Path.Combine(Config.configPath, configName));
+            configurationGame = JsonConvert.DeserializeObject<ConfigGame>(configFileString);
         }
     }
 }
