@@ -18,7 +18,6 @@ namespace GameVoice.Gui {
         private Dictionary<string, int[]> timers = new Dictionary<string, int[]>();
         private int[] controlMargin = { 5, 3, 5, 5 };
         private int[] controlSize = { (int)(Screen.PrimaryScreen.Bounds.Width * 0.025), (int)(Screen.PrimaryScreen.Bounds.Height * (2D / 45D)) };
-        private int leftMargin = (int)(Screen.PrimaryScreen.Bounds.Width * 0.03);
         private System.Timers.Timer loopTimer;
 
         private enum stateCode {
@@ -124,7 +123,7 @@ namespace GameVoice.Gui {
             // Set flow panel size
             this.flowLayoutPanel.Size = new Size(GameVoice.configurationGame.jungleTimer["time"].ToArray().Length * (controlSize[0] + controlMargin[0] + controlMargin[2]), Screen.PrimaryScreen.Bounds.Height);
             // Add left margin to panel
-            this.flowLayoutPanel.Location = new Point(leftMargin, 0);
+            this.flowLayoutPanel.Location = new Point(getLeftMargin(), 0);
             // Add backgroud to panel
             Image backgroundMonsterImage = Bitmap.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Image." + "jungle-" + GameVoice.configuration.activeGame + "-monster-background.png"));
             Image backgroundTimerImage = Bitmap.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GameVoice.Resources.Image." + "jungle-" + GameVoice.configuration.activeGame + "-monster-timer-background.png"));
@@ -134,6 +133,19 @@ namespace GameVoice.Gui {
             // Break flow of last image
             string lastTimerName = ((JProperty)GameVoice.configurationGame.jungleTimer["time"].Last).Name;
             this.flowLayoutPanel.SetFlowBreak(flowLayoutPanel.Controls.Find("monsterImage" + lastTimerName, false)[0], true);
+        }
+
+        private int getLeftMargin() {
+            double leftPercent = 0;
+            switch (GameVoice.configuration.activeGame) {
+                case "smite":
+                    leftPercent = Convert.ToDouble(Decimal.Divide(82, 1600));
+                    break;
+                case "lol":
+                    leftPercent = Convert.ToDouble(Decimal.Divide(48, 1600));
+                    break;
+            }
+            return (int)(Screen.PrimaryScreen.Bounds.Width * leftPercent);
         }
 
         private void timerClicked(object sender, EventArgs e) {
