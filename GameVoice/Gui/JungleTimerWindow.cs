@@ -19,6 +19,7 @@ namespace GameVoice.Gui {
         private int[] controlMargin = { 5, 3, 5, 5 };
         private int[] controlSize = { (int)(Screen.PrimaryScreen.Bounds.Width * 0.025), (int)(Screen.PrimaryScreen.Bounds.Height * (2D / 45D)) };
         private int leftMargin = (int)(Screen.PrimaryScreen.Bounds.Width * 0.03);
+        private System.Timers.Timer loopTimer;
 
         private enum stateCode {
             RESET = 0, // Timer not countign down
@@ -35,7 +36,7 @@ namespace GameVoice.Gui {
         }
 
         private void addSystemTimer() {
-            System.Timers.Timer loopTimer = new System.Timers.Timer();
+            loopTimer = new System.Timers.Timer();
             loopTimer.Elapsed += new ElapsedEventHandler(timerLoop);
             loopTimer.Interval = 1000;
             loopTimer.Start();
@@ -165,6 +166,10 @@ namespace GameVoice.Gui {
                     }
                 }
             }
+        }
+
+        internal void stopTimer() {
+            loopTimer.Stop();
         }
     }
 }
