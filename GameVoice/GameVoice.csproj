@@ -122,6 +122,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Command.cs" />
     <Compile Include="Util\User32.cs" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-monster-background.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-monster-timer-background.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-attack speed.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-damage.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-fire giant.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-furies.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-gold fury.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-mana.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-middle furies.png" />
+    <EmbeddedResource Include="Resources\Image\jungle-smite-speed.png" />
     <EmbeddedResource Include="Resources\Image\jungle-lol-monster-timer-background.png" />
     <EmbeddedResource Include="Resources\Image\jungle-lol-monster-background.png" />
     <EmbeddedResource Include="Resources\Image\jungle-lol-baron.png" />

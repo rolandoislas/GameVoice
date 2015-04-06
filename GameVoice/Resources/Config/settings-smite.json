@@ -1,7 +1,16 @@
 ﻿{
   "jungleTimer": {
-    "active": false,
+    "active": true,
     "userEnabled": false,
-    "time": {}
+    "time": {
+      "furies": 100,
+      "middle furies": 180,
+      "attack speed": 240,
+      "damage": 240,
+      "mana": 240,
+      "speed": 240,
+      "gold fury": 300,
+      "fire giant": 300
+    }
   }
 }
