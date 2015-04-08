@@ -185,7 +185,9 @@ namespace GameVoice {
         }
 
         private void openCommandsFile(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, getCommandsFileName()));
+            CommandEditWindow window = new CommandEditWindow();
+            window.FormClosed += reloadRecognizer;
+            window.ShowDialog();
         }
 
         private void openGameSwitchWindow(object sender, EventArgs e) {
@@ -228,6 +230,5 @@ namespace GameVoice {
             GameVoice.loadConfiguration();
             initializeWindow();
         }
-
     }
 }
