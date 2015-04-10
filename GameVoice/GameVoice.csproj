@@ -125,12 +125,21 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="GameVoice.cs" />
+    <Compile Include="Gui\SettingsEditWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\SettingsEditWindow.Designer.cs">
+      <DependentUpon>SettingsEditWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Command.cs" />
     <Compile Include="Util\JObjectExtension.cs" />
     <Compile Include="Util\User32.cs" />
     <EmbeddedResource Include="Gui\CommandEditWindow.resx">
       <DependentUpon>CommandEditWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\SettingsEditWindow.resx">
+      <DependentUpon>SettingsEditWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Image\jungle-smite-monster-background.png" />
     <EmbeddedResource Include="Resources\Image\jungle-smite-monster-timer-background.png" />

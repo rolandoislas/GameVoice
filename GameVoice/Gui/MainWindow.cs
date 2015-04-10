@@ -181,7 +181,9 @@ namespace GameVoice {
         }
 
         private void openConfigurationFile(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start(@Path.Combine(Config.configPath, ConfigFiles.SETTINGS));
+            SettingsEditWindow window = new SettingsEditWindow();
+            window.FormClosed += reloadRecognizer;
+            window.ShowDialog();
         }
 
         private void openCommandsFile(object sender, EventArgs e) {
