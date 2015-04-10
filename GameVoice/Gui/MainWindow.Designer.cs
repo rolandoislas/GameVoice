@@ -33,9 +33,8 @@
             this.micLevelLabel = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.switchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,33 +72,25 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem});
+            this.editCommandsToolStripMenuItem,
+            this.editConfigurationToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
-            // settingsToolStripMenuItem
+            // editCommandsToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editConfigurationToolStripMenuItem,
-            this.editCommandsToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
+            this.editCommandsToolStripMenuItem.Name = "editCommandsToolStripMenuItem";
+            this.editCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editCommandsToolStripMenuItem.Text = "Commands";
+            this.editCommandsToolStripMenuItem.Click += new System.EventHandler(this.openCommandsFile);
             // 
             // editConfigurationToolStripMenuItem
             // 
             this.editConfigurationToolStripMenuItem.Name = "editConfigurationToolStripMenuItem";
-            this.editConfigurationToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.editConfigurationToolStripMenuItem.Text = "Edit Configuration";
+            this.editConfigurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editConfigurationToolStripMenuItem.Text = "Preferences";
             this.editConfigurationToolStripMenuItem.Click += new System.EventHandler(this.openConfigurationFile);
-            // 
-            // editCommandsToolStripMenuItem
-            // 
-            this.editCommandsToolStripMenuItem.Name = "editCommandsToolStripMenuItem";
-            this.editCommandsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.editCommandsToolStripMenuItem.Text = "Edit Commands";
-            this.editCommandsToolStripMenuItem.Click += new System.EventHandler(this.openCommandsFile);
             // 
             // menuStrip
             // 
@@ -125,19 +116,19 @@
             // switchGameToolStripMenuItem
             // 
             this.switchGameToolStripMenuItem.Name = "switchGameToolStripMenuItem";
-            this.switchGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.switchGameToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.switchGameToolStripMenuItem.Text = "Switch Game";
             this.switchGameToolStripMenuItem.Click += new System.EventHandler(this.openGameSwitchWindow);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(140, 6);
             // 
             // jungleTimerToolStripMenuItem
             // 
             this.jungleTimerToolStripMenuItem.Name = "jungleTimerToolStripMenuItem";
-            this.jungleTimerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.jungleTimerToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.jungleTimerToolStripMenuItem.Text = "Jungle Timer";
             this.jungleTimerToolStripMenuItem.Click += new System.EventHandler(this.toggleJungle);
             // 
@@ -169,14 +160,13 @@
         private System.Windows.Forms.Label micLevelLabel;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editConfigurationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editCommandsToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem switchGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem jungleTimerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editConfigurationToolStripMenuItem;
     }
 }
 
