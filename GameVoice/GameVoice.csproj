@@ -99,6 +99,12 @@
   <ItemGroup>
     <Compile Include="Data\Config.cs" />
     <Compile Include="Data\ConfigGame.cs" />
+    <Compile Include="Gui\CommandEditWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\CommandEditWindow.Designer.cs">
+      <DependentUpon>CommandEditWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\Control\FlowLayoutPanelExtension.cs" />
     <Compile Include="Gui\GameSwitchWindow.cs">
       <SubType>Form</SubType>
@@ -119,9 +125,22 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="GameVoice.cs" />
+    <Compile Include="Gui\SettingsEditWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\SettingsEditWindow.Designer.cs">
+      <DependentUpon>SettingsEditWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Command.cs" />
+    <Compile Include="Util\JObjectExtension.cs" />
     <Compile Include="Util\User32.cs" />
+    <EmbeddedResource Include="Gui\CommandEditWindow.resx">
+      <DependentUpon>CommandEditWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\SettingsEditWindow.resx">
+      <DependentUpon>SettingsEditWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Image\jungle-smite-monster-background.png" />
     <EmbeddedResource Include="Resources\Image\jungle-smite-monster-timer-background.png" />
     <EmbeddedResource Include="Resources\Image\jungle-smite-attack speed.png" />
