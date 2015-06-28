@@ -30,6 +30,8 @@
             this.checkBoxLanguageCultureNotification = new System.Windows.Forms.CheckBox();
             this.labelConfidenceThresholdPercent = new System.Windows.Forms.Label();
             this.labelFailAlertThresholdPercent = new System.Windows.Forms.Label();
+            this.labelDictationHotKey = new System.Windows.Forms.Label();
+            this.buttonDictationHotKey = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarConfidenceThreshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFailAlertThreshold)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +79,7 @@
             // checkBoxLanguageCultureNotification
             // 
             this.checkBoxLanguageCultureNotification.AutoSize = true;
-            this.checkBoxLanguageCultureNotification.Location = new System.Drawing.Point(15, 79);
+            this.checkBoxLanguageCultureNotification.Location = new System.Drawing.Point(15, 90);
             this.checkBoxLanguageCultureNotification.Name = "checkBoxLanguageCultureNotification";
             this.checkBoxLanguageCultureNotification.Size = new System.Drawing.Size(166, 17);
             this.checkBoxLanguageCultureNotification.TabIndex = 5;
@@ -101,11 +103,32 @@
             this.labelFailAlertThresholdPercent.Size = new System.Drawing.Size(0, 13);
             this.labelFailAlertThresholdPercent.TabIndex = 9;
             // 
+            // labelDictationHotKey
+            // 
+            this.labelDictationHotKey.AutoSize = true;
+            this.labelDictationHotKey.Location = new System.Drawing.Point(36, 66);
+            this.labelDictationHotKey.Name = "labelDictationHotKey";
+            this.labelDictationHotKey.Size = new System.Drawing.Size(87, 13);
+            this.labelDictationHotKey.TabIndex = 10;
+            this.labelDictationHotKey.Text = "Dictation HotKey";
+            // 
+            // buttonDictationHotKey
+            // 
+            this.buttonDictationHotKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDictationHotKey.Location = new System.Drawing.Point(147, 61);
+            this.buttonDictationHotKey.Name = "buttonDictationHotKey";
+            this.buttonDictationHotKey.Size = new System.Drawing.Size(75, 23);
+            this.buttonDictationHotKey.TabIndex = 11;
+            this.buttonDictationHotKey.UseVisualStyleBackColor = true;
+            this.buttonDictationHotKey.Click += new System.EventHandler(this.dictationHotKeyButtonClicked);
+            // 
             // SettingsEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(283, 105);
+            this.ClientSize = new System.Drawing.Size(283, 114);
+            this.Controls.Add(this.buttonDictationHotKey);
+            this.Controls.Add(this.labelDictationHotKey);
             this.Controls.Add(this.labelFailAlertThresholdPercent);
             this.Controls.Add(this.labelConfidenceThresholdPercent);
             this.Controls.Add(this.checkBoxLanguageCultureNotification);
@@ -136,5 +159,7 @@
         private System.Windows.Forms.CheckBox checkBoxLanguageCultureNotification;
         private System.Windows.Forms.Label labelConfidenceThresholdPercent;
         private System.Windows.Forms.Label labelFailAlertThresholdPercent;
+        private System.Windows.Forms.Label labelDictationHotKey;
+        private System.Windows.Forms.Button buttonDictationHotKey;
     }
 }

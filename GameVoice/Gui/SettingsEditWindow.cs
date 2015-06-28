@@ -15,9 +15,24 @@ namespace GameVoice.Gui {
     public partial class SettingsEditWindow : Form {
 
         JObject settings;
+        private bool waitForDictationHotKeyInput;
 
         public SettingsEditWindow() {
             InitializeComponent();
+            KeyPreview = true;
+            KeyDown += keyDown;
+        }
+
+        private void keyDown(object sender, KeyEventArgs e) {
+            Console.Out.WriteLine(e.KeyCode);
+            Console.Out.WriteLine(e.KeyData);
+            Console.Out.WriteLine(e.KeyValue);
+            if (waitForDictationHotKeyInput) {
+                buttonDictationHotKey.Text = e.KeyCode.ToString();
+                settings["dictationHotKey"] = e.KeyValue;
+                waitForDictationHotKeyInput = false;
+                buttonDictationHotKey.Enabled = true;
+            }
         }
 
         private void init(object sender, EventArgs e) {
@@ -31,6 +46,7 @@ namespace GameVoice.Gui {
             trackBarFailAlertThreshold.Value = (int)(settings["failAlertThreshold"].Value<double>() * 100);
             failAlertThresholdScroll(null, null);
             checkBoxLanguageCultureNotification.Checked = !settings["disableLanguageCultureNotification"].Value<bool>();
+            buttonDictationHotKey.Text = ((Keys)(int)settings["dictationHotKey"]).ToString();
         }
 
         private void loadSettings() {
@@ -57,6 +73,14 @@ namespace GameVoice.Gui {
             string serialized = JsonConvert.SerializeObject(settings, Formatting.Indented);
             File.WriteAllText(Path.Combine(Config.configPath, ConfigFiles.SETTINGS), serialized);
             GameVoice.loadConfiguration();
+        }
+
+        private void dictationHotKeyButtonClicked(object sender, EventArgs e) {
+            if (waitForDictationHotKeyInput)
+                return;
+            buttonDictationHotKey.Text = "Press a key";
+            buttonDictationHotKey.Enabled = false;
+            waitForDictationHotKeyInput = true;
         }
     }
 }

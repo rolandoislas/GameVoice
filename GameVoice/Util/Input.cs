@@ -7,10 +7,11 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameVoice.Util {
-    class User32 {
+    class Input {
 
         #region sendInputString
         public void SendInputString(string inputString) {
+            cleanString(ref inputString);
             List<INPUT> input = new List<INPUT>();
             for (int i = 0; i < inputString.Length; i++) {
                 int[] specialKeyBounds = checkSpecialKey(inputString, inputString.Substring(i, 1), ref i);
@@ -23,6 +24,10 @@ namespace GameVoice.Util {
             }
             var inputArray = input.ToArray();
             SendInput((ushort)inputArray.Length, inputArray, INPUT.Size);
+        }
+
+        private void cleanString(ref string inputString) {
+            inputString = inputString.Replace(" ", "{space}");
         }
 
         private bool isCustomCommand(string inputString, int[] bounds, ref int i) {
@@ -1058,6 +1063,5 @@ namespace GameVoice.Util {
             internal short wParamH;
         }
         #endregion
-
     }
 }
