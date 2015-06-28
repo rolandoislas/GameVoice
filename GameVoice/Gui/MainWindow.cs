@@ -1,4 +1,5 @@
 ﻿using GameVoice.Gui;
+using GameVoice.Speech;
 using GameVoice.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,11 +17,37 @@ namespace GameVoice {
         List<Command> commands = new List<Command>();
         private string mainCommand =  "";
         private JungleTimerWindow jungleTimer;
+        private Dictation dictation;
+        private HotKey dictationHotkey;
 
         public MainWindow() {
             InitializeComponent();
             initializeWindow();
             initializeRecognizer();
+            initializeDictation();
+        }
+
+        private void initializeDictation() {
+            initializeDictation(false);
+        }
+
+        private void initializeDictation(bool hotKeyOnly) {
+            dictationHotkey = new HotKey(HotKey.Constants.NOMOD, (Keys)GameVoice.configuration.dictationHotKey, this); // TODO make configurable
+            dictationHotkey.register();
+            if (hotKeyOnly)
+                return;
+            dictation = new Dictation();
+            dictation.AudioLevelUpdated += new EventHandler<AudioLevelUpdatedEventArgs>(engine_AudioLevelUpdated);
+        }
+
+        protected override void WndProc(ref Message m) {
+            if (m.Msg == HotKey.Constants.WM_HOTKEY_MSG_ID && dictation.toggle()) {
+                speechRecognitionEngine.RecognizeAsyncCancel();
+                writeResult("Listening for dictation.", true);
+            } else if (m.Msg == HotKey.Constants.WM_HOTKEY_MSG_ID) {
+                reloadRecognizer(null, null);
+            }
+            base.WndProc(ref m);
         }
 
         private void initializeWindow() {
@@ -37,6 +64,7 @@ namespace GameVoice {
                 jungleTimer = new JungleTimerWindow();
                 jungleTimer.Show();
             } else if (jungleTimer != null) {
+                jungleTimer.stopTimer();
                 jungleTimer.Dispose();
             }
         }
@@ -120,7 +148,7 @@ namespace GameVoice {
             if(aboveConfidenceThreshold(e.Result.Confidence)) {
                 string command = getCommandFromVoiceResult(e.Result.Text);
                 if (command != null) {
-                    User32 sendInput = new User32();
+                    Input sendInput = new Input();
                     sendInput.SendInputString(command);
                 }
             } else if(e.Result.Confidence > GameVoice.configuration.failAlertThreshold) {
@@ -206,6 +234,8 @@ namespace GameVoice {
             initializeRecognizer(false);
             GameVoice.loadConfiguration();
             initializeWindow();
+            dictationHotkey.unregister();
+            initializeDictation(true);
         }
 
         private void toggleJungle(object sender, EventArgs e) {

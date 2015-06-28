@@ -13,6 +13,7 @@ namespace GameVoice {
         public bool disableLanguageCultureNotification { get; set; }
         public string activeGame { get; set; }
         public float failAlertThreshold { get; set; }
+        public int dictationHotKey { get; set; }
 
     }
 
